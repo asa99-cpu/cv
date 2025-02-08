@@ -1,8 +1,1 @@
-libcairo
-libpango
-libpangocairo
-libgdk-pixbuf
-libatk
-libffi-dev
-shared-mime-info
-libpangoft
+wkhtmltopdf

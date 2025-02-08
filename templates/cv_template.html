@@ -1,43 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} - CV</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; }
-        h1 { color: #333; }
-        h2 { color: #555; border-bottom: 2px solid #ccc; padding-bottom: 5px; }
+        h1 { color: #2C3E50; }
         p { font-size: 14px; }
+        .section { margin-bottom: 20px; }
+        .bold { font-weight: bold; }
     </style>
 </head>
 <body>
+
     <h1>{{ name }}</h1>
-    <p><strong>📞 Phone:</strong> {{ phone }}</p>
-    <p><strong>📧 Email:</strong> {{ email }}</p>
-    <p><strong>🎂 Date of Birth:</strong> {{ dob }}</p>
-    <p><strong>🏠 Nationality:</strong> {{ nationality }}</p>
+    <p class="bold">📞 Phone:</p> <p>{{ phone }}</p>
+    <p class="bold">📧 Email:</p> <p>{{ email }}</p>
+    <p class="bold">🎂 Date of Birth:</p> <p>{{ dob }}</p>
+    <p class="bold">🏠 Nationality:</p> <p>{{ nationality }}</p>
 
-    <h2>Education</h2>
-    <p>{{ education }}</p>
+    <div class="section">
+        <h2>Education</h2>
+        <p>{{ education }}</p>
+    </div>
 
-    <h2>Skills</h2>
-    <ul>
-        {% for skill in skills %}
-            <li>{{ skill }}</li>
-        {% endfor %}
-    </ul>
+    <div class="section">
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
-    <h2>Languages</h2>
-    <ul>
-        {% for language in languages %}
-            <li>{{ language }}</li>
-        {% endfor %}
-    </ul>
+    <div class="section">
+        <h2>Languages</h2>
+        <ul>
+            {% for language in languages %}
+                <li>{{ language }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
-    <h2>Internships</h2>
-    <ul>
-        {% for internship in internships %}
-            <li>{{ internship }}</li>
-        {% endfor %}
-    </ul>
+    <div class="section">
+        <h2>Internships</h2>
+        <ul>
+            {% for internship in internships %}
+                <li>{{ internship }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
 </body>
 </html>
-

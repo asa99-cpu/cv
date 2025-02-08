@@ -15,3 +15,5 @@ def create_pdf_cv(data):
     weasyprint.HTML(string=html_content).write_pdf(pdf_buffer)
     pdf_buffer.seek(0)
     return pdf_buffer
+
+# (The rest of your app code goes here.)

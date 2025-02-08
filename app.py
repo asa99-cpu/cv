@@ -1,4 +1,3 @@
-import os
 import weasyprint
 from jinja2 import Template
 from io import BytesIO

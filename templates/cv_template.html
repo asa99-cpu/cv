@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        h2 { color: #555; border-bottom: 2px solid #ccc; padding-bottom: 5px; }
+        p { font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h1>{{ name }}</h1>
+    <p><strong>📞 Phone:</strong> {{ phone }}</p>
+    <p><strong>📧 Email:</strong> {{ email }}</p>
+    <p><strong>🎂 Date of Birth:</strong> {{ dob }}</p>
+    <p><strong>🏠 Nationality:</strong> {{ nationality }}</p>
+
+    <h2>Education</h2>
+    <p>{{ education }}</p>
+
+    <h2>Skills</h2>
+    <ul>
+        {% for skill in skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Languages</h2>
+    <ul>
+        {% for language in languages %}
+            <li>{{ language }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Internships</h2>
+    <ul>
+        {% for internship in internships %}
+            <li>{{ internship }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
 

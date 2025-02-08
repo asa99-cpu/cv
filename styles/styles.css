@@ -1,9 +1,13 @@
-body {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-}
-
+/* Custom styling for Streamlit */
 h1 {
-    color: #2E3B4E;
+    color: #2E86C1;
+    text-align: center;
 }
 
+h2 {
+    color: #117A65;
+}
+
+body {
+    background-color: #F4F6F7;
+}

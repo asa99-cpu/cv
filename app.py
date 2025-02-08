@@ -1,6 +1,8 @@
 import streamlit as st
 from sections import introduction, education, experience, skills, contact
 
+st.markdown(f'<style>{open("static/styles.css").read()}</style>', unsafe_allow_html=True)
+
 def main():
     st.title("Derin Najmadin Mahamd - CV")
 

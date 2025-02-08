@@ -1,4 +1,5 @@
 streamlit
-pdfkit
 jinja2
+pdfkit
 weasyprint
+cffi

@@ -1,36 +1,45 @@
 import streamlit as st
 import json
 import docx
-from docx.shared import Pt
 from io import BytesIO
+from jinja2 import Template
 from weasyprint import HTML
 
-# Load CV data from JSON
+# Load CV data from JSON file
 with open("data/cv_data.json", "r") as file:
     cv_data = json.load(file)
 
-# Function to generate Word CV
+# Function to generate Word CV dynamically
 def create_word_cv(data):
     doc = docx.Document()
+
+    # Title
     doc.add_heading(data["name"], level=1)
 
+    # Contact Information
     doc.add_paragraph(f"📞 Phone: {data['phone']}")
     doc.add_paragraph(f"📧 Email: {data['email']}")
     doc.add_paragraph(f"🎂 Date of Birth: {data['dob']}")
     doc.add_paragraph(f"🏠 Nationality: {data['nationality']}")
-    
+
+    # Education
     doc.add_heading("Education", level=2)
     doc.add_paragraph(data["education"])
 
+    # Skills
     doc.add_heading("Skills", level=2)
-    doc.add_paragraph(", ".join(data["skills"]))
+    for skill in data["skills"]:
+        doc.add_paragraph(f"• {skill}")
 
+    # Languages
     doc.add_heading("Languages", level=2)
-    doc.add_paragraph(", ".join(data["languages"]))
+    for language in data["languages"]:
+        doc.add_paragraph(f"• {language}")
 
+    # Internships
     doc.add_heading("Internships", level=2)
     for internship in data["internships"]:
-        doc.add_paragraph(f"- {internship}")
+        doc.add_paragraph(f"• {internship}")
 
     # Save to memory
     buffer = BytesIO()
@@ -38,25 +47,12 @@ def create_word_cv(data):
     buffer.seek(0)
     return buffer
 
-# Function to generate PDF CV
+# Function to generate PDF CV dynamically
 def create_pdf_cv(data):
-    html_content = f"""
-    <h1>{data['name']}</h1>
-    <p><strong>📞 Phone:</strong> {data['phone']}</p>
-    <p><strong>📧 Email:</strong> {data['email']}</p>
-    <p><strong>🎂 Date of Birth:</strong> {data['dob']}</p>
-    <p><strong>🏠 Nationality:</strong> {data['nationality']}</p>
-    <h2>Education</h2>
-    <p>{data['education']}</p>
-    <h2>Skills</h2>
-    <p>{", ".join(data['skills'])}</p>
-    <h2>Languages</h2>
-    <p>{", ".join(data['languages'])}</p>
-    <h2>Internships</h2>
-    <ul>
-        {"".join([f"<li>{internship}</li>" for internship in data['internships']])}
-    </ul>
-    """
+    with open("templates/cv_template.html", "r") as file:
+        template = Template(file.read())
+
+    html_content = template.render(data)
     pdf_buffer = BytesIO()
     HTML(string=html_content).write_pdf(pdf_buffer)
     pdf_buffer.seek(0)

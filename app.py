@@ -1,15 +1,31 @@
+import os
 import pdfkit
 from jinja2 import Template
 from io import BytesIO
+import subprocess
 
-# Manually set wkhtmltopdf path for Streamlit Cloud
-PDFKIT_CONFIG = pdfkit.configuration(wkhtmltopdf="/usr/bin/wkhtmltopdf")
+# Try to find the path of wkhtmltopdf in the environment
+def find_wkhtmltopdf():
+    try:
+        # Check if wkhtmltopdf is installed in the environment
+        result = subprocess.run(['which', 'wkhtmltopdf'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return result.stdout.decode().strip()  # Return the path
+    except Exception as e:
+        return None
+
+wkhtmltopdf_path = find_wkhtmltopdf()
+
+if not wkhtmltopdf_path:
+    raise Exception("wkhtmltopdf is not installed in the environment")
+
+# Manually set the wkhtmltopdf path for pdfkit
+PDFKIT_CONFIG = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
 
 def create_pdf_cv(data):
     # Load HTML template
     with open("templates/cv_template.html", "r") as file:
         template = Template(file.read())
-    
+
     # Render the HTML content with provided data
     html_content = template.render(data)
 

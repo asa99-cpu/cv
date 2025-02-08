@@ -1,11 +1,11 @@
 {
-    "name": "Derin Najmadin Mahamd",
-    "phone": "0750 710 40 32",
-    "email": "deman.najmadin@gmail.com",
-    "dob": "September 9, 1995",
-    "nationality": "Kurd",
-    "education": "Bachelor degree in Science of Chemistry",
-    "skills": ["Microsoft Office", "Video Editing", "Sewing", "Translation"],
-    "languages": ["Kurdish", "Arabic", "English", "Persian"],
-    "internships": ["Internship program of the Kurdistan regional government at 2017"]
+  "name": "Derin Najmadin Mahamd",
+  "email": "deman.najmadin@gmail.com",
+  "phone": "0750 710 40 32",
+  "dob": "September 9, 1995",
+  "gender": "Female",
+  "education": "Bachelor degree in Science of Chemistry",
+  "languages": ["Kurdish", "Arabic", "English", "Persian"],
+  "internship": "Internship program of the Kurdistan regional government at 2017",
+  "skills": ["Laboratory technician", "Microsoft Office", "Video editing", "Sewing", "Translation"]
 }

@@ -1,56 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ name }} - CV</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        h1 { color: #2C3E50; }
-        p { font-size: 14px; }
-        .section { margin-bottom: 20px; }
-        .bold { font-weight: bold; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ name }} - CV</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+    header img {
+      width: 100px;
+      border-radius: 50%;
+    }
+    .contact {
+      text-align: right;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    h2 {
+      background-color: #f2f2f2;
+      padding: 10px;
+      margin: 0;
+    }
+    .skills ul {
+      list-style: none;
+      padding: 0;
+    }
+    .skills li {
+      background: #f2f2f2;
+      margin-bottom: 5px;
+      padding: 5px;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>{{ name }}</h1>
-    <p class="bold">📞 Phone:</p> <p>{{ phone }}</p>
-    <p class="bold">📧 Email:</p> <p>{{ email }}</p>
-    <p class="bold">🎂 Date of Birth:</p> <p>{{ dob }}</p>
-    <p class="bold">🏠 Nationality:</p> <p>{{ nationality }}</p>
-
-    <div class="section">
-        <h2>Education</h2>
+  <div class="container">
+    <header>
+      <div>
+        <h1>{{ name }}</h1>
         <p>{{ education }}</p>
+      </div>
+      <div class="contact">
+        <p>Email: {{ email }}</p>
+        <p>Phone: {{ phone }}</p>
+        <p>Date of Birth: {{ dob }}</p>
+        <p>Gender: {{ gender }}</p>
+      </div>
+    </header>
+
+    <div class="section">
+      <h2>Skills</h2>
+      <div class="skills">
+        <ul>
+          {% for skill in skills %}
+            <li>{{ skill }}</li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
 
     <div class="section">
-        <h2>Skills</h2>
-        <ul>
-            {% for skill in skills %}
-                <li>{{ skill }}</li>
-            {% endfor %}
-        </ul>
+      <h2>Languages</h2>
+      <p>{{ languages }}</p>
     </div>
 
     <div class="section">
-        <h2>Languages</h2>
-        <ul>
-            {% for language in languages %}
-                <li>{{ language }}</li>
-            {% endfor %}
-        </ul>
+      <h2>Internship</h2>
+      <p>{{ internship }}</p>
     </div>
-
-    <div class="section">
-        <h2>Internships</h2>
-        <ul>
-            {% for internship in internships %}
-                <li>{{ internship }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+  </div>
 
 </body>
 </html>

@@ -1,19 +1,16 @@
 import streamlit as st
-from sections import introduction, skills, education, languages, internships, contact
+from scripts.components import display_cv
 
-def main():
-    st.title("Derin Najmadin Mahamd's CV")
+# Page Configuration
+st.set_page_config(page_title="Derin Najmadin Mahamd - CV", page_icon="📄", layout="wide")
 
-    # Display profile image
-    st.image("assets/profile_image.jpg", width=150)
+# Apply custom CSS
+with open("styles/styles.css") as css:
+    st.markdown(f"<style>{css.read()}</style>", unsafe_allow_html=True)
 
-    # Call different sections of the CV
-    introduction.show()
-    skills.show()
-    education.show()
-    languages.show()
-    internships.show()
-    contact.show()
+# Load CV data
+with open("data/cv_text.txt", "r", encoding="utf-8") as file:
+    cv_text = file.read()
 
-if __name__ == "__main__":
-    main()
+# Display CV
+display_cv(cv_text)

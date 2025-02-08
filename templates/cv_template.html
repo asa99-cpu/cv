@@ -1,89 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ name }} - CV</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      width: 80%;
-      margin: auto;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 0;
-    }
-    header img {
-      width: 100px;
-      border-radius: 50%;
-    }
-    .contact {
-      text-align: right;
-    }
-    .section {
-      margin-bottom: 30px;
-    }
-    h2 {
-      background-color: #f2f2f2;
-      padding: 10px;
-      margin: 0;
-    }
-    .skills ul {
-      list-style: none;
-      padding: 0;
-    }
-    .skills li {
-      background: #f2f2f2;
-      margin-bottom: 5px;
-      padding: 5px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} - CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .header {
+            text-align: center;
+        }
+        .header img {
+            width: 150px;
+            border-radius: 50%;
+        }
+        h1 {
+            font-size: 2em;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 0;
+        }
+        .section {
+            margin-top: 30px;
+        }
+        .section h3 {
+            margin-top: 0;
+        }
+        .skills, .languages {
+            list-style: none;
+            padding: 0;
+        }
+        .skills li, .languages li {
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ profile_image }}" alt="Profile Picture">
+            <h1>{{ name }}</h1>
+            <p>Email: {{ email }} | Phone: {{ phone }} | Date of Birth: {{ dob }} | Gender: {{ gender }} | Nationality: {{ nationality }}</p>
+        </div>
+        
+        <div class="section">
+            <h2>Education</h2>
+            <ul>
+                {% for education in education %}
+                    <li>{{ education.degree }} - {{ education.institution }} ({{ education.year }})</li>
+                {% endfor %}
+            </ul>
+        </div>
 
-  <div class="container">
-    <header>
-      <div>
-        <h1>{{ name }}</h1>
-        <p>{{ education }}</p>
-      </div>
-      <div class="contact">
-        <p>Email: {{ email }}</p>
-        <p>Phone: {{ phone }}</p>
-        <p>Date of Birth: {{ dob }}</p>
-        <p>Gender: {{ gender }}</p>
-      </div>
-    </header>
+        <div class="section">
+            <h2>Skills</h2>
+            <ul class="skills">
+                {% for skill in skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
 
-    <div class="section">
-      <h2>Skills</h2>
-      <div class="skills">
-        <ul>
-          {% for skill in skills %}
-            <li>{{ skill }}</li>
-          {% endfor %}
-        </ul>
-      </div>
+        <div class="section">
+            <h2>Languages</h2>
+            <ul class="languages">
+                {% for language in languages %}
+                    <li>{{ language }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Internships</h2>
+            <ul>
+                {% for internship in internships %}
+                    <li>{{ internship.title }} - {{ internship.year }}</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-
-    <div class="section">
-      <h2>Languages</h2>
-      <p>{{ languages }}</p>
-    </div>
-
-    <div class="section">
-      <h2>Internship</h2>
-      <p>{{ internship }}</p>
-    </div>
-  </div>
-
 </body>
 </html>
